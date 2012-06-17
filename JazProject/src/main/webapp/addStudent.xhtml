@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<ui:define name="content">
+		<h:form id="studentform">
+			<h:panelGrid columns="2">
+				
+				<h:outputText value="#{msg.personFirstNameLabel}" />
+				<h:inputText id="name" value="#{studentBean.student.firstName}" >
+
+				</h:inputText>
+
+				<h:outputText value="#{msg.personLastNameLabel}" />
+				<h:inputText id="surname" value="#{studentBean.student.lastName}" >
+					
+				</h:inputText>
+				
+				<h:outputText value="#{msg.studentAlbum}" />
+				<h:inputText id="album" value="#{studentBean.student.album_id}" 
+					validator="#{studentBean.uniqueIndeks}" required="#{true}">
+				</h:inputText>
+
+				<h:outputText value="#{msg.personPinLabel}" />
+				<h:inputText id="yob" value="#{studentBean.student.pin}" />
+				
+				<h:outputText value="#{msg.personZipCodeLabel}" />
+				<h:inputText id="zipcode" value="#{studentBean.student.zipCode}" />
+
+				<h:outputText value="#{msg.personTownLabel}" />
+				<h:inputText id="town" value="#{studentBean.student.town}" />
+
+				<h:outputText value="#{msg.personDobLabel}" />
+				<rich:calendar value="#{studentBean.student.dateOfBirth}"
+					id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{true}"
+					cellWidth="24px" cellHeight="22px" style="width:200px">
+					<a4j:ajax render="messages" execute="@this" />
+				</rich:calendar>
+
+			</h:panelGrid>
+
+			<h:commandButton value="#{msg.personFormOKButton}"
+				action="#{studentBean.dataStudent}" />
+				
+			<h:panelGrid>
+				<h:messages showDetail="#{true}" showSummary="#{false}" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

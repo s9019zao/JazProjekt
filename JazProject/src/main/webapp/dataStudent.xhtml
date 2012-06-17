@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+
+	<ui:define name="content">
+
+    <h:form>
+    
+     <h:panelGrid columns="2">
+
+				<h:outputText value="#{msg.personFirstNameLabel}" />
+				<h:outputText id="name" value="#{studentBean.student.firstName}" />
+
+				<h:outputText value="#{msg.personLastNameLabel}" />
+				<h:outputText id="surname" value="#{studentBean.student.lastName}" />
+				
+				<h:outputText value="#{msg.studentAlbum}" />
+				<h:outputText id="album" value="#{studentBean.student.album_id}" />
+
+				<h:outputText value="#{msg.personPinLabel}" />
+				<h:outputText id="yob" value="#{studentBean.student.pin}" />
+				
+				<h:outputText value="#{msg.personZipCodeLabel}" />
+				<h:outputText id="zipcode" value="#{studentBean.student.zipCode}" />
+
+				<h:outputText value="#{msg.personTownLabel}" />
+				<h:outputText id="town" value="#{studentBean.student.town}" />
+
+				<h:outputText value="#{msg.personDobLabel}" />
+				<h:outputText id="dateOfBirth" value="#{studentBean.student.dateOfBirth}" />
+							
+
+	</h:panelGrid>
+      
+      
+        <f:facet name="header">#{msg.action}</f:facet>
+        <h:commandButton value="#{msg.personFormOKButton}"
+				action="#{studentBean.addStudent}" />
+
+		<h:commandButton value="#{msg.personFormCorrectButton}"
+				action="#{studentBean.correctStudent}" />
+      
+      
+     
+    </h:form>
+      
+	</ui:define>
+
+</ui:composition>

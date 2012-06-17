@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<ui:define name="content">
+	
+    <h:form>
+    
+     <rich:extendedDataTable value="#{studentBean.allStudents}"
+            var="item" id="table" frozenColumns="3"
+            style="height:300px; width:800px;" selectionMode="none">
+            
+      <f:facet name="header">#{msg.personAllLabel}</f:facet>
+      
+      <rich:column>
+        <f:facet name="header">#{msg.studentAlbum}</f:facet>
+        #{item.album_id}
+      </rich:column>
+      
+      <rich:column>
+        <f:facet name="header">#{msg.personFirstNameLabel}</f:facet>
+        #{item.firstName}
+      </rich:column>
+      
+      <rich:column>
+        <f:facet name="header">#{msg.personLastNameLabel}</f:facet>
+        #{item.lastName}
+      </rich:column>
+      
+      <rich:column>
+        <f:facet name="header">#{msg.personPinLabel}</f:facet>
+        #{item.pin}
+      </rich:column>
+      
+      <rich:column>
+        <f:facet name="header">#{msg.personZipCodeLabel}</f:facet>
+        #{item.zipCode}
+      </rich:column>
+      
+      <rich:column>
+        <f:facet name="header">#{msg.personTownLabel}</f:facet>
+        #{item.town}
+      </rich:column>
+      
+      <rich:column>
+        <f:facet name="header">#{msg.personDobLabel}</f:facet>
+        #{item.dateOfBirth}
+      </rich:column>
+      
+      <rich:column>
+        <f:facet name="header">#{msg.action}</f:facet>
+        <h:commandLink value="#{msg.actionDelete}" action="#{studentBean.deleteStudent}"/>
+      </rich:column>
+      
+     </rich:extendedDataTable>
+    </h:form>
+      
+	</ui:define>
+	
+</ui:composition>

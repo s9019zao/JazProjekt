@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+
+	<ui:define name="content">
+
+    	<h:form>
+    
+     		<h:panelGrid columns="2">
+
+				<h:outputText value="#{msg.subiectNumberLabel}" />
+				<h:outputText id="name" value="##{subiectBean.subiect.Number}" />
+
+				<h:outputText value="#{msg.subiectNameLabel}" />
+				<h:outputText id="surname" value="#{subiectBean.subiect.Name}" />
+				
+			</h:panelGrid>
+          
+        	<f:facet name="header">#{msg.action}</f:facet>
+        	<h:commandButton value="#{msg.personFormOKButton}"
+				action="#{subiectBean.addSubiect}" />
+
+			<h:commandButton value="#{msg.personFormCorrectButton}"
+				action="#{subiectBean.correctSubiect}" />  
+     
+   	 	</h:form>
+      
+	</ui:define>
+
+</ui:composition>

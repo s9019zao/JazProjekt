@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core" 
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
+    <h:outputStylesheet>
+        .cols {
+        vertical-align: top;
+        }
+    </h:outputStylesheet>
+    <h:form id="form">
+        <h:panelGrid columns="2" columnClasses="cols,cols" width="300">
+            <rich:panelMenu style="width:180px" itemMode="ajax" groupMode="ajax" groupExpandedLeftIcon="triangleUp"
+                groupCollapsedLeftIcon="triangleDown" topGroupExpandedRightIcon="chevronUp"
+                topGroupCollapsedRightIcon="chevronDown" itemLeftIcon="disc" itemChangeListener="#{panelMenuBean.updateCurrent}">
+                <rich:panelMenuGroup label="#{msg.linkHome}" action="home?faces-redirect=true">
+                </rich:panelMenuGroup>
+                <rich:panelMenuGroup label="Student" >
+                    <rich:panelMenuItem label="#{msg.studentAddLabel}" name="#addStudent" action="addStudent?faces-redirect=true"/>
+                    <rich:panelMenuItem label="#{msg.studentAllLabel}" name="showStudents" action="showStudents?faces-redirect=true"/>
+                </rich:panelMenuGroup>
+                <rich:panelMenuGroup label="Subiect" >
+                    <rich:panelMenuItem label="#{msg.subiectAddLabel}" name="addSubiect" action="addSubiect?faces-redirect=true"/>
+                    <rich:panelMenuItem label="#{msg.subiectShowAllLabel}" name="showSubiects" action="showSubiects?faces-redirect=true"/>
+                </rich:panelMenuGroup>
+            </rich:panelMenu>
+            <a4j:outputPanel ajaxRendered="true">
+                <rich:panel rendered="#{not empty panelMenuBean.current}">
+                    <h:outputText value="#{panelMenuBean.current} selected" id="current" />
+                </rich:panel>
+            </a4j:outputPanel>
+        </h:panelGrid>
+    </h:form>
+</ui:composition>
